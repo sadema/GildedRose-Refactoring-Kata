@@ -5,16 +5,16 @@ public class TexttestFixture {
         System.out.println("OMGHAI!");
 
         BaseItem[] items = new BaseItem[]{
-                new GenericItem(new Item("+5 Dexterity Vest", 10, 20)), //
-                new GenericItem(new Item("Aged Brie", 2, 0)), //
-                new GenericItem(new Item("Elixir of the Mongoose", 5, 7)), //
-                new GenericItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80)), //
-                new GenericItem(new Item("Sulfuras, Hand of Ragnaros", -1, 80)),
-                new GenericItem(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20)),
-                new GenericItem(new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49)),
-                new GenericItem(new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49)),
+                new GenericItem("+5 Dexterity Vest", 10, 20), //
+                new GenericItem("Aged Brie", 2, 0), //
+                new GenericItem("Elixir of the Mongoose", 5, 7), //
+                SulfurasItem.of(0), //
+                SulfurasItem.of(-1),
+                new GenericItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                new GenericItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                new GenericItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
                 // this conjured item does not work properly yet
-                new GenericItem(new Item("Conjured Mana Cake", 3, 6))};
+                new GenericItem("Conjured Mana Cake", 3, 6)};
 
 //        GildedRose app = new GildedRose(items);
 
@@ -29,6 +29,7 @@ public class TexttestFixture {
             for (BaseItem item : items) {
                 System.out.println(item);
                 item.updateQuality();
+                item.updateSellIn();
             }
             System.out.println();
         }

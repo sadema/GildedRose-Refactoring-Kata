@@ -4,4 +4,6 @@ public interface BaseItem {
 
     void updateQuality();
 
+    void updateSellIn();
+
 }

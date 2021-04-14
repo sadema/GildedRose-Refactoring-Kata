@@ -2,10 +2,11 @@ package com.gildedrose;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-public class GenericItem implements BaseItem {
+public class GenericItem extends DelegateItem implements BaseItem {
 
-    private final Item item;
+    public GenericItem(String name, int sellIn, int quality) {
+        super(name, sellIn, quality);
+    }
 
     @Override
     public String toString() {
@@ -61,6 +62,11 @@ public class GenericItem implements BaseItem {
                 }
             }
         }
+    }
+
+    @Override
+    public void updateSellIn() {
+        // TODO Sjoerd: needs implementation
     }
 
 }
