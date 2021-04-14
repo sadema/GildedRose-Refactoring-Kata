@@ -10,9 +10,9 @@ public class TexttestFixture {
                 new GenericItem("Elixir of the Mongoose", 5, 7), //
                 SulfurasItem.of(0), //
                 SulfurasItem.of(-1),
-                new GenericItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new GenericItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new GenericItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                BackstageItem.of(15, 20),
+                BackstageItem.of(10, 49),
+                BackstageItem.of(5, 49),
                 // this conjured item does not work properly yet
                 new GenericItem("Conjured Mana Cake", 3, 6)};
 

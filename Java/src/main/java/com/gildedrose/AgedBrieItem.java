@@ -11,23 +11,18 @@ public class AgedBrieItem extends DelegateItem implements BaseItem {
     }
 
     @Override
-    public void updateQuality() {
+    protected void updateSellIn() {
+        item.sellIn -= 1;
+    }
+
+    protected void updateQuality() {
         if (isNotMaximumQuality()) {
-            increaseQuality();
-        }
-    }
-
-    @Override
-    public void updateSellIn() {
-        item.sellIn = item.sellIn - 1;
-    }
-
-    private void increaseQuality() {
-        if (isNegativeSellIn()) {
-            item.quality = item.quality + 2;
-        }
-        else {
-            item.quality = item.quality + 1;
+            if (isNegativeSellIn()) {
+                item.quality += 2;
+            }
+            else {
+                item.quality += 1;
+            }
         }
     }
 

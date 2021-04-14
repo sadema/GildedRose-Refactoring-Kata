@@ -10,7 +10,7 @@ class SulfurasItemTest {
     @Test
     void testUpdateQuality() {
         SulfurasItem item = SulfurasItem.of(0);
-        item.updateQuality();
+        item.updateQualityWithMaximumCheck();
         assertEquals(80, item.getQuality());
     }
 

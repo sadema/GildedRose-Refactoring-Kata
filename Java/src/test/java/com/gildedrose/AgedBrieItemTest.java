@@ -9,29 +9,36 @@ class AgedBrieItemTest {
     @Test
     void updateQualityOfFifty() {
         AgedBrieItem item = AgedBrieItem.of(2, 50);
-        item.updateQuality();
+        item.updateQualityWithMaximumCheck();
         assertEquals(50, item.getQuality());
     }
 
     @Test
-    void updateQualityLessThanFifty() {
+    void updateQualityWithLessThanFifty() {
         AgedBrieItem item = AgedBrieItem.of(2, 20);
-        item.updateQuality();
+        item.updateQualityWithMaximumCheck();
         assertEquals(21, item.getQuality());
     }
 
     @Test
-    void updateQualityLessThanFiftyAndPositiveSellIn() {
+    void updateQualityWithLessThanFiftyAndPositiveSellIn() {
         AgedBrieItem item = AgedBrieItem.of(2, 20);
-        item.updateQuality();
+        item.updateQualityWithMaximumCheck();
         assertEquals(21, item.getQuality());
     }
 
     @Test
-    void updateQualityLessThanFiftyAndNegativeSellIn() {
+    void updateQualityWithLessThanFiftyAndNegativeSellIn() {
         AgedBrieItem item = AgedBrieItem.of(-2, 20);
-        item.updateQuality();
+        item.updateQualityWithMaximumCheck();
         assertEquals(22, item.getQuality());
+    }
+
+    @Test
+    void updateQualityWithFourtyNineAndNegativeSellIn() {
+        AgedBrieItem item = AgedBrieItem.of(-2, 49);
+        item.updateQualityWithMaximumCheck();
+        assertEquals(50, item.getQuality());
     }
 
     @Test

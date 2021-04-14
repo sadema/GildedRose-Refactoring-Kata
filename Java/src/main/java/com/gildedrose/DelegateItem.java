@@ -1,6 +1,8 @@
 package com.gildedrose;
 
-public abstract class DelegateItem implements BaseItem {
+public abstract class DelegateItem {
+
+    protected final static int MAX_QUALITY = 50;
 
     protected final Item item;
 
@@ -14,11 +16,26 @@ public abstract class DelegateItem implements BaseItem {
     }
 
     protected boolean isNotMaximumQuality() {
-        return item.quality < 50;
+        return item.quality < MAX_QUALITY;
+    }
+
+    protected boolean isMaximumQualityExceeded() {
+        return item.quality > MAX_QUALITY;
     }
 
     protected boolean isNegativeSellIn() {
         return item.sellIn < 0;
+    }
+
+    protected boolean isMaximumQualityCheckEnabled() {
+        return true;
+    }
+
+    protected void updateQualityWithMaximumCheck() {
+        updateQuality();
+        if (isMaximumQualityCheckEnabled() && isMaximumQualityExceeded()) {
+            item.quality = MAX_QUALITY;
+        }
     }
 
     public int getQuality() {
@@ -29,14 +46,13 @@ public abstract class DelegateItem implements BaseItem {
         return item.sellIn;
     }
 
-    @Override
     public void updateSellInAndQuality() {
         updateSellIn();
-        updateQuality();
+        updateQualityWithMaximumCheck();
     }
 
-    protected abstract void updateSellIn();
-
     protected abstract void updateQuality();
+
+    protected abstract void updateSellIn();
 
 }

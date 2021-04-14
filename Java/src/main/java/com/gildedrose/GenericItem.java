@@ -1,19 +1,17 @@
 package com.gildedrose;
 
-import lombok.RequiredArgsConstructor;
-
 public class GenericItem extends DelegateItem implements BaseItem {
 
     public GenericItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
-    @Override
-    public String toString() {
-        return item.toString();
-    }
+//    @Override
+//    public String toString() {
+//        return item.toString();
+//    }
 
-    public void updateQuality() {
+    public void updateQualityWithMaximumCheck() {
         if (!item.name.equals("Aged Brie")
                 && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality > 0) {
@@ -66,6 +64,11 @@ public class GenericItem extends DelegateItem implements BaseItem {
 
     @Override
     public void updateSellIn() {
+        // TODO Sjoerd: needs implementation
+    }
+
+    @Override
+    protected void updateQuality() {
         // TODO Sjoerd: needs implementation
     }
 

@@ -11,6 +11,11 @@ public class SulfurasItem extends DelegateItem implements BaseItem {
     }
 
     @Override
+    protected boolean isMaximumQualityCheckEnabled() {
+        return false;
+    }
+
+    @Override
     public void updateQuality() {
         // do Nothing intentionally
     }
