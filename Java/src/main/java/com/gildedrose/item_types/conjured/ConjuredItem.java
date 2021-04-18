@@ -14,12 +14,13 @@ public class ConjuredItem extends DelegateItem implements BaseItem {
     }
 
     @Override
+    protected void updateSellIn() {
+        decreaseSellIn(1);
+    }
+
+    @Override
     protected void updateQuality() {
        super.decreaseQuality(2);
     }
 
-    @Override
-    protected void updateSellIn() {
-        item.sellIn -= 1;
-    }
 }

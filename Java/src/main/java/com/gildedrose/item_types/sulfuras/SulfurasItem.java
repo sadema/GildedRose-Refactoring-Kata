@@ -1,4 +1,7 @@
-package com.gildedrose;
+package com.gildedrose.item_types.sulfuras;
+
+import com.gildedrose.BaseItem;
+import com.gildedrose.DelegateItem;
 
 public class SulfurasItem extends DelegateItem implements BaseItem {
 
@@ -11,8 +14,8 @@ public class SulfurasItem extends DelegateItem implements BaseItem {
     }
 
     @Override
-    protected boolean isMaximumQualityCheckEnabled() {
-        return false;
+    public void updateSellInAndQuality() {
+        // do Nothing intentionally
     }
 
     @Override

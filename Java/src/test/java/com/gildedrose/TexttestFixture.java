@@ -1,24 +1,25 @@
 package com.gildedrose;
 
+import com.gildedrose.item_types.agedbrie.AgedBrieItem;
 import com.gildedrose.item_types.backstage.BackstageItem;
 import com.gildedrose.item_types.conjured.ConjuredItem;
+import com.gildedrose.item_types.generic.GenericItem;
+import com.gildedrose.item_types.sulfuras.SulfurasItem;
 
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
         BaseItem[] items = new BaseItem[]{
-                new GenericItem("+5 Dexterity Vest", 10, 20), //
+                GenericItem.of("+5 Dexterity Vest", 10, 20), //
                 AgedBrieItem.of(2, 0), //
-                new GenericItem("Elixir of the Mongoose", 5, 7), //
+                GenericItem.of("Elixir of the Mongoose", 5, 7), //
                 SulfurasItem.of(0), //
                 SulfurasItem.of(-1),
                 BackstageItem.of(15, 20),
                 BackstageItem.of(10, 49),
                 BackstageItem.of(5, 49),
                 ConjuredItem.of("Conjured Mana Cake", 3, 6)};
-
-//        GildedRose app = new GildedRose(items);
 
         int days = 2;
         if (args.length > 0) {

@@ -1,6 +1,5 @@
-package com.gildedrose;
+package com.gildedrose.item_types.backstage.quality;
 
-import com.gildedrose.item_types.backstage.BackstageItem;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -11,9 +10,9 @@ public class QualityCalculatorProvider {
 
     private final List<QualityCalculator> qualityCalculators;
 
-    public Optional<QualityCalculator> getQualityCalculator(BackstageItem backstageItem) {
+    public Optional<QualityCalculator> getQualityCalculator(int sellIn) {
         return qualityCalculators.stream()
-                .filter(it -> it.applyTo(backstageItem.getSellIn()))
+                .filter(it -> it.applyTo(sellIn))
                 .findFirst();
     }
 

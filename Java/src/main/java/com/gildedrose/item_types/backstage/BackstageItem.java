@@ -2,11 +2,11 @@ package com.gildedrose.item_types.backstage;
 
 import com.gildedrose.BaseItem;
 import com.gildedrose.DelegateItem;
-import com.gildedrose.QualityCalculator;
-import com.gildedrose.QualityCalculatorProvider;
-import com.gildedrose.item_types.backstage.quality.HighSellInQualityCalculator;
-import com.gildedrose.item_types.backstage.quality.LowSellInQualityCalculator;
-import com.gildedrose.item_types.backstage.quality.MiddleSellInQualityCalculator;
+import com.gildedrose.item_types.backstage.quality.QualityCalculator;
+import com.gildedrose.item_types.backstage.quality.QualityCalculatorProvider;
+import com.gildedrose.item_types.backstage.quality.calculator.HighSellInQualityCalculator;
+import com.gildedrose.item_types.backstage.quality.calculator.LowSellInQualityCalculator;
+import com.gildedrose.item_types.backstage.quality.calculator.MiddleSellInQualityCalculator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,27 +31,33 @@ public class BackstageItem extends DelegateItem implements BaseItem {
     }
 
     @Override
+    protected boolean isNegativeSellInCheckEnabled() {
+        return true;
+    }
+
+    @Override
+    public void updateSellInAndQuality() {
+        updateQuality();
+        updateSellIn();
+    }
+
+    @Override
     protected void updateSellIn() {
-        item.sellIn -= 1;
+        decreaseSellIn(1);
     }
 
     @Override
     protected void updateQuality() {
-        if (isNegativeSellIn()) {
-            item.quality = 0;
-        }
-        else {
+        if (isNotMaximumQuality()) {
             updateQualityBySellIn();
         }
     }
 
     private void updateQualityBySellIn() {
-        if (isNotMaximumQuality()) {
-            Optional<QualityCalculator> qualityCalculator = qualityCalculatorProvider.getQualityCalculator(this);
-            qualityCalculator.ifPresent(it -> {
-                it.updateQuality(item);
-            });
-        }
+        Optional<QualityCalculator> qualityCalculator = qualityCalculatorProvider.getQualityCalculator(this.getSellIn());
+        qualityCalculator.ifPresent(it -> {
+            increaseQuality(it.getQualityUpdate());
+        });
     }
 
 }

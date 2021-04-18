@@ -4,7 +4,7 @@ public abstract class DelegateItem {
 
     protected final static int MAX_QUALITY = 50;
 
-    protected final Item item;
+    private final Item item;
 
     protected DelegateItem(String name, int sellIn, int quality) {
         item = new Item(name, sellIn, quality);
@@ -27,15 +27,8 @@ public abstract class DelegateItem {
         return item.sellIn < 0;
     }
 
-    protected boolean isMaximumQualityCheckEnabled() {
-        return true;
-    }
-
-    protected void updateQualityWithMaximumCheck() {
-        updateQuality();
-        if (isMaximumQualityCheckEnabled() && isMaximumQualityExceeded()) {
-            item.quality = MAX_QUALITY;
-        }
+    protected boolean isNegativeSellInCheckEnabled() {
+        return false;
     }
 
     public int getQuality() {
@@ -47,13 +40,17 @@ public abstract class DelegateItem {
     }
 
     public void updateSellInAndQuality() {
-        updateQualityWithMaximumCheck();
         updateSellIn();
+        updateQuality();
     }
 
     protected abstract void updateQuality();
 
     protected abstract void updateSellIn();
+
+    protected void setItemQualityToZero() {
+        item.quality = 0;
+    }
 
     protected void decreaseQuality(int qualityDecrease) {
         item.quality -= qualityDecrease;
@@ -61,4 +58,19 @@ public abstract class DelegateItem {
             item.quality = 0;
         }
     }
+
+    protected void increaseQuality(int qualityIncrease) {
+        item.quality += qualityIncrease;
+        if (isMaximumQualityExceeded()) {
+            item.quality = MAX_QUALITY;
+        }
+    }
+
+    protected void decreaseSellIn(int sellInDecrease) {
+        item.sellIn -= sellInDecrease;
+        if (isNegativeSellInCheckEnabled() && isNegativeSellIn()) {
+            setItemQualityToZero();
+        }
+    }
+
 }

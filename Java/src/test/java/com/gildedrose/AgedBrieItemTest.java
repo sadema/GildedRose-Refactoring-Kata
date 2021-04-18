@@ -1,50 +1,51 @@
 package com.gildedrose;
 
+import com.gildedrose.item_types.agedbrie.AgedBrieItem;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AgedBrieItemTest {
 
     @Test
     void updateQualityOfFifty() {
         AgedBrieItem item = AgedBrieItem.of(2, 50);
-        item.updateQualityWithMaximumCheck();
+        item.updateSellInAndQuality();
         assertEquals(50, item.getQuality());
     }
 
     @Test
     void updateQualityWithLessThanFifty() {
         AgedBrieItem item = AgedBrieItem.of(2, 20);
-        item.updateQualityWithMaximumCheck();
+        item.updateSellInAndQuality();
         assertEquals(21, item.getQuality());
     }
 
     @Test
     void updateQualityWithLessThanFiftyAndPositiveSellIn() {
         AgedBrieItem item = AgedBrieItem.of(2, 20);
-        item.updateQualityWithMaximumCheck();
+        item.updateSellInAndQuality();
         assertEquals(21, item.getQuality());
     }
 
     @Test
     void updateQualityWithLessThanFiftyAndNegativeSellIn() {
         AgedBrieItem item = AgedBrieItem.of(-2, 20);
-        item.updateQualityWithMaximumCheck();
+        item.updateSellInAndQuality();
         assertEquals(22, item.getQuality());
     }
 
     @Test
     void updateQualityWithFourtyNineAndNegativeSellIn() {
         AgedBrieItem item = AgedBrieItem.of(-2, 49);
-        item.updateQualityWithMaximumCheck();
+        item.updateSellInAndQuality();
         assertEquals(50, item.getQuality());
     }
 
     @Test
     void updateSellIn() {
         AgedBrieItem item = AgedBrieItem.of(2, 20);
-        item.updateSellIn();
+        item.updateSellInAndQuality();
         assertEquals(1, item.getSellIn());
     }
 }

@@ -1,7 +1,6 @@
-package com.gildedrose.item_types.backstage.quality;
+package com.gildedrose.item_types.backstage.quality.calculator;
 
-import com.gildedrose.Item;
-import com.gildedrose.QualityCalculator;
+import com.gildedrose.item_types.backstage.quality.QualityCalculator;
 
 public class LowSellInQualityCalculator implements QualityCalculator {
 
@@ -11,8 +10,8 @@ public class LowSellInQualityCalculator implements QualityCalculator {
     }
 
     @Override
-    public void updateQuality(Item item) {
-        item.quality += 3;
+    public int getQualityUpdate() {
+        return 3;
     }
 
 }

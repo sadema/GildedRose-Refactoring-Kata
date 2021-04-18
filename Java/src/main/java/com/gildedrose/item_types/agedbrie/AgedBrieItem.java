@@ -1,4 +1,7 @@
-package com.gildedrose;
+package com.gildedrose.item_types.agedbrie;
+
+import com.gildedrose.BaseItem;
+import com.gildedrose.DelegateItem;
 
 public class AgedBrieItem extends DelegateItem implements BaseItem {
 
@@ -12,16 +15,16 @@ public class AgedBrieItem extends DelegateItem implements BaseItem {
 
     @Override
     protected void updateSellIn() {
-        item.sellIn -= 1;
+        decreaseSellIn(1);
     }
 
     protected void updateQuality() {
         if (isNotMaximumQuality()) {
             if (isNegativeSellIn()) {
-                item.quality += 2;
+                increaseQuality(2);
             }
             else {
-                item.quality += 1;
+                increaseQuality(1);
             }
         }
     }
