@@ -6,7 +6,7 @@ public class HighSellInQualityCalculator implements QualityCalculator {
 
     @Override
     public boolean applyTo(int sellIn) {
-        return sellIn > 10;
+        return sellIn >= 10;
     }
 
     @Override

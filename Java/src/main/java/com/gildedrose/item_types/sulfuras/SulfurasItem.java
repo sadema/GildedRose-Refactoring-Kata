@@ -14,11 +14,6 @@ public class SulfurasItem extends DelegateItem implements BaseItem {
     }
 
     @Override
-    public void updateSellInAndQuality() {
-        // do Nothing intentionally
-    }
-
-    @Override
     public void updateQuality() {
         // do Nothing intentionally
     }

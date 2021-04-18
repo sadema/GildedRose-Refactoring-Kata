@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class DelegateItemTest {
 
@@ -57,12 +56,12 @@ class DelegateItemTest {
         assertEquals(expected, result);
     }
 
-    @Test
-    void isNegativeSellInCheckEnabled() {
-        cut = new TestDelegateItem("some name", 0, 0);
-        boolean result = cut.isNegativeSellInCheckEnabled();
-        assertFalse(result);
-    }
+//    @Test
+//    void isNegativeSellInCheckEnabled() {
+//        cut = new TestDelegateItem("some name", 0, 0);
+//        boolean result = cut.isNegativeSellInCheckEnabled();
+//        assertFalse(result);
+//    }
 
     @Test
     void setItemQualityToZero() {

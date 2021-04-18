@@ -17,7 +17,7 @@ class HighSellInQualityCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"9,false", "10, false", "11,true", "12,true"})
+    @CsvSource({"9,false", "10, true", "11,true", "12,true"})
     void applyTo(int sellIn, boolean expected) {
         boolean result = cut.applyTo(sellIn);
         assertEquals(expected, result);

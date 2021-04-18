@@ -1,24 +1,24 @@
-package com.gildedrose.item_types.conjured;
+package com.gildedrose.item_types.agedbrie;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ConjuredItemTest {
+class AgedBrieItemTest {
 
     @ParameterizedTest
-    @CsvSource({"4,2", "3,1", "2,0", "1,0", "0,0", "-1,0"})
+    @CsvSource({"48,49", "49,50", "50,50"})
     void updateQuality(int quality, int expected) {
-        ConjuredItem item = ConjuredItem.of("Conjured Mana Cake", 0, quality);
+        AgedBrieItem item = AgedBrieItem.of(0, quality);
         item.updateQuality();
         assertEquals(expected, item.getQuality());
     }
 
     @ParameterizedTest
-    @CsvSource({"6,2", "5,1", "4,0", "3,0", "2,0", "1,0", "0,0", "-1,0"})
+    @CsvSource({"46,48", "47,49", "48,50", "49,50", "50,50"})
     void updateQualityWithNegativeSellIn(int quality, int expected) {
-        ConjuredItem item = ConjuredItem.of("Conjured Mana Cake", -1, quality);
+        AgedBrieItem item = AgedBrieItem.of(-1, quality);
         item.updateQuality();
         assertEquals(expected, item.getQuality());
     }
@@ -26,9 +26,8 @@ class ConjuredItemTest {
     @ParameterizedTest
     @CsvSource({"3,2", "2,1", "1,0", "0,-1", "-1,-2"})
     void updateSellIn(int sellIn, int expected) {
-        ConjuredItem cut = ConjuredItem.of("Conjured Mana Cake", sellIn, 0);
-        cut.updateSellIn();
-        assertEquals(expected, cut.getSellIn());
+        AgedBrieItem item = AgedBrieItem.of(sellIn, 20);
+        item.updateSellIn();
+        assertEquals(expected, item.getSellIn());
     }
-
 }

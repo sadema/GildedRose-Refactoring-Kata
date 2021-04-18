@@ -20,7 +20,12 @@ public class ConjuredItem extends DelegateItem implements BaseItem {
 
     @Override
     protected void updateQuality() {
-       super.decreaseQuality(2);
+        if (isNegativeSellIn()) {
+            decreaseQuality(4);
+        }
+        else {
+            decreaseQuality(2);
+        }
     }
 
 }

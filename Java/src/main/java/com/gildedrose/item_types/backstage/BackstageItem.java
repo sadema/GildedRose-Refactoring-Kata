@@ -30,16 +30,16 @@ public class BackstageItem extends DelegateItem implements BaseItem {
         return new BackstageItem("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }
 
-    @Override
-    protected boolean isNegativeSellInCheckEnabled() {
-        return true;
-    }
+//    @Override
+//    protected boolean isNegativeSellInCheckEnabled() {
+//        return true;
+//    }
 
-    @Override
-    public void updateSellInAndQuality() {
-        updateQuality();
-        updateSellIn();
-    }
+//    @Override
+//    public void updateSellInAndQuality() {
+//        updateQuality();
+//        updateSellIn();
+//    }
 
     @Override
     protected void updateSellIn() {
@@ -48,16 +48,19 @@ public class BackstageItem extends DelegateItem implements BaseItem {
 
     @Override
     protected void updateQuality() {
-        if (isNotMaximumQuality()) {
-            updateQualityBySellIn();
-        }
+        updateQualityBySellIn();
     }
 
     private void updateQualityBySellIn() {
-        Optional<QualityCalculator> qualityCalculator = qualityCalculatorProvider.getQualityCalculator(this.getSellIn());
-        qualityCalculator.ifPresent(it -> {
-            increaseQuality(it.getQualityUpdate());
-        });
+        if (isNegativeSellIn()) {
+            setItemQualityToZero();
+        }
+        else {
+            Optional<QualityCalculator> qualityCalculator = qualityCalculatorProvider.getQualityCalculator(this.getSellIn());
+            qualityCalculator.ifPresent(it -> {
+                increaseQuality(it.getQualityUpdate());
+            });
+        }
     }
 
 }
