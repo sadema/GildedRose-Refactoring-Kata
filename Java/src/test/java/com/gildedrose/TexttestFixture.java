@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.item_types.backstage.BackstageItem;
+import com.gildedrose.item_types.conjured.ConjuredItem;
+
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
@@ -13,8 +16,7 @@ public class TexttestFixture {
                 BackstageItem.of(15, 20),
                 BackstageItem.of(10, 49),
                 BackstageItem.of(5, 49),
-                // this conjured item does not work properly yet
-                new GenericItem("Conjured Mana Cake", 3, 6)};
+                ConjuredItem.of("Conjured Mana Cake", 3, 6)};
 
 //        GildedRose app = new GildedRose(items);
 
