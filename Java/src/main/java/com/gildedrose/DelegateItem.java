@@ -47,12 +47,18 @@ public abstract class DelegateItem {
     }
 
     public void updateSellInAndQuality() {
-        updateSellIn();
         updateQualityWithMaximumCheck();
+        updateSellIn();
     }
 
     protected abstract void updateQuality();
 
     protected abstract void updateSellIn();
 
+    protected void decreaseQuality(int qualityDecrease) {
+        item.quality -= qualityDecrease;
+        if (item.quality < 0) {
+            item.quality = 0;
+        }
+    }
 }
