@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,20 +16,16 @@ class DelegateItemTest {
 
         @Override
         protected void updateQuality() {
-
+            // intentionally empty
         }
 
         @Override
         protected void updateSellIn() {
-
+            // intentionally empty
         }
     }
 
     private TestDelegateItem cut;
-
-    @BeforeEach
-    void setup() {
-    }
 
     @ParameterizedTest
     @CsvSource({"49,true", "50,false", "51,false"})
@@ -55,13 +50,6 @@ class DelegateItemTest {
         boolean result = cut.isNegativeSellIn();
         assertEquals(expected, result);
     }
-
-//    @Test
-//    void isNegativeSellInCheckEnabled() {
-//        cut = new TestDelegateItem("some name", 0, 0);
-//        boolean result = cut.isNegativeSellInCheckEnabled();
-//        assertFalse(result);
-//    }
 
     @Test
     void setItemQualityToZero() {

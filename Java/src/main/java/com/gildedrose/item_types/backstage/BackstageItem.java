@@ -30,17 +30,6 @@ public class BackstageItem extends DelegateItem implements BaseItem {
         return new BackstageItem("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }
 
-//    @Override
-//    protected boolean isNegativeSellInCheckEnabled() {
-//        return true;
-//    }
-
-//    @Override
-//    public void updateSellInAndQuality() {
-//        updateQuality();
-//        updateSellIn();
-//    }
-
     @Override
     protected void updateSellIn() {
         decreaseSellIn(1);

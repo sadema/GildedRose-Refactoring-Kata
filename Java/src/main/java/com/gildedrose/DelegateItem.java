@@ -27,10 +27,6 @@ public abstract class DelegateItem {
         return item.sellIn < 0;
     }
 
-//    protected boolean isNegativeSellInCheckEnabled() {
-//        return false;
-//    }
-
     public int getQuality() {
         return item.quality;
     }
@@ -68,9 +64,6 @@ public abstract class DelegateItem {
 
     protected void decreaseSellIn(int sellInDecrease) {
         item.sellIn -= sellInDecrease;
-//        if (isNegativeSellInCheckEnabled() && isNegativeSellIn()) {
-//            setItemQualityToZero();
-//        }
     }
 
 }

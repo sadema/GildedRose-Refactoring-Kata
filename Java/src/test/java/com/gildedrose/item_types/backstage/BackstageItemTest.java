@@ -7,13 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BackstageItemTest {
 
-//    @Test
-//    void isNegativeSellInCheckEnabled() {
-//        BackstageItem cut = BackstageItem.of(0, 0);
-//        boolean result = cut.isNegativeSellInCheckEnabled();
-//        assertTrue(result);
-//    }
-
     @ParameterizedTest
     @CsvSource({"2,1", "1,0", "0,-1", "-1,-2", "-2,-3"})
     void updateSellIn(int sellIn, int expected) {
